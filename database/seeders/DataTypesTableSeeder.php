@@ -18,7 +18,7 @@ class DataTypesTableSeeder extends Seeder
                 'name'                  => 'samples',
                 'display_name_singular' => __('joy-voyager-bread-sample::seeders.data_types.sample.singular'),
                 'display_name_plural'   => __('joy-voyager-bread-sample::seeders.data_types.sample.plural'),
-                'icon'                  => 'voyager-bread',
+                'icon'                  => 'voyager-bread voyager-bread-sample voyager-paw',
                 'model_name'            => 'Joy\\VoyagerBreadSample\\Models\\Sample',
                 // 'policy_name'           => 'Joy\\VoyagerBreadSample\\Policies\\SamplePolicy',
                 // 'controller'            => 'Joy\\VoyagerBreadSample\\Http\\Controllers\\VoyagerBreadSampleController',

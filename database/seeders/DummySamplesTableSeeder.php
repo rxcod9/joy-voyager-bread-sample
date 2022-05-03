@@ -14,7 +14,7 @@ class DummySamplesTableSeeder extends Seeder
      */
     public function run()
     {
-        $count = 100;
+        $count = 20;
         Sample::factory()
             ->count($count)
             ->state(function (array $attributes) use ($count) {

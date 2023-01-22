@@ -2,9 +2,8 @@
 
 namespace Joy\VoyagerBreadSample\Database\Factories;
 
-use Joy\VoyagerBreadSample\Models\Sample;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
+use Joy\VoyagerBreadSample\Models\Sample;
 
 class SampleFactory extends Factory
 {
@@ -23,7 +22,7 @@ class SampleFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name(),
+            'name'        => $this->faker->name(),
             'description' => $this->faker->text(500),
         ];
     }

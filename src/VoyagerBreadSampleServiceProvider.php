@@ -4,11 +4,14 @@ declare(strict_types=1);
 
 namespace Joy\VoyagerBreadSample;
 
-use Illuminate\Support\Facades\Route;
-use Illuminate\Support\ServiceProvider;
 use Joy\VoyagerBreadSample\Console\Commands\BreadSample;
 use Joy\VoyagerBreadSample\Models\Sample as ModelsSample;
 use TCG\Voyager\Facades\Voyager;
+
+use Illuminate\Support\{
+    Facades\Route,
+    ServiceProvider
+};
 
 /**
  * Class VoyagerBreadSampleServiceProvider
@@ -39,7 +42,9 @@ class VoyagerBreadSampleServiceProvider extends ServiceProvider
 
         $this->mapWebRoutes();
 
-        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+        if (config('joy-voyager-bread-sample.database.autoload_migrations', true)) {
+            $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+        }
 
         $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'joy-voyager-bread-sample');
     }

@@ -2,8 +2,8 @@
 
 namespace Joy\VoyagerBreadSample\Database\Seeders;
 
-use Joy\VoyagerBreadSample\Models\Sample;
 use Illuminate\Database\Seeder;
+use TCG\Voyager\Facades\Voyager;
 
 class SamplesTableSeeder extends Seeder
 {
@@ -14,16 +14,16 @@ class SamplesTableSeeder extends Seeder
      */
     public function run()
     {
-        if (Sample::query()->count() > 0) {
+        if (Voyager::model('Sample')->query()->count() > 0) {
             return false;
         }
 
         $count = 20;
-        Sample::factory()
+        Voyager::model('Sample')->factory()
             ->count($count)
             ->state(function (array $attributes) use ($count) {
                 return [
-                    'name' => 'Sample ' . time()
+                    'name'        => 'Sample ' . time()
                         . ' ' . rand(1, $count)
                         . ' ' . rand(1, $count)
                         . ' ' . rand(1, $count),

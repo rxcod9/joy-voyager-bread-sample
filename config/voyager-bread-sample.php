@@ -29,4 +29,17 @@ return [
     'controllers' => [
         'namespace' => 'Joy\\VoyagerBreadSample\\Http\\Controllers',
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Database Config
+    |--------------------------------------------------------------------------
+    |
+    | Here you can specify voyager database settings
+    |
+    */
+
+    'database' => [
+        'autoload_migrations' => env('VOYAGER_BREAD_SAMPLE_DATABASE_AUTOLOAD_MIGRATIONS', true),
+    ],
 ];

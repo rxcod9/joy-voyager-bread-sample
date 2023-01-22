@@ -7,11 +7,8 @@ namespace Joy\VoyagerBreadSample;
 use Joy\VoyagerBreadSample\Console\Commands\BreadSample;
 use Joy\VoyagerBreadSample\Models\Sample as ModelsSample;
 use TCG\Voyager\Facades\Voyager;
-
-use Illuminate\Support\{
-    Facades\Route,
-    ServiceProvider
-};
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\ServiceProvider;
 
 /**
  * Class VoyagerBreadSampleServiceProvider

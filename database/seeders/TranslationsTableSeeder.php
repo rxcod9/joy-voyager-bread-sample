@@ -103,7 +103,7 @@ class TranslationsTableSeeder extends Seeder
 
     private function trans($lang, $keys, $value)
     {
-        $_t = Translation::firstOrNew(array_merge($keys, [
+        $_t = Voyager::model('Translation')->firstOrNew(array_merge($keys, [
             'locale' => $lang,
         ]));
 

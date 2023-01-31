@@ -29,20 +29,11 @@ class CreateSamplesTable extends Migration
                 break;
         }
 
-        Schema::create('samples', function (Blueprint $table) {
+        Schema::create('samples', function (Blueprint $table) use ($columnType) {
             $table->id();
             $table->string('name')->nullable();
             $table->text('description')->nullable();
             $table->string('image')->nullable();
-
-            $table->bigInteger('created_by_id')->unsigned()->nullable()->default(null);
-            $table->foreign('created_by_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('set null');
-
-            $table->bigInteger('modified_by_id')->unsigned()->nullable()->default(null);
-            $table->foreign('modified_by_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('set null');
-
-            $table->bigInteger('assigned_to_id')->unsigned()->nullable()->default(null);
-            $table->foreign('assigned_to_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('set null');
 
             $table->bigInteger('parent_id')->unsigned()->nullable()->default(null);
             $table->foreign('parent_id')->references('id')->on('samples')->onUpdate('cascade')->onDelete('set null');
@@ -51,7 +42,7 @@ class CreateSamplesTable extends Migration
 
             $table->string('address')->nullable();
             if (!isset($columnType)) {
-                $table->binary('base64_image');
+                $table->binary('base64_image')->nullable();
             }
             $table->string('browse')->nullable();
             $table->boolean('checkbox')->nullable();
@@ -96,6 +87,10 @@ class CreateSamplesTable extends Migration
 
             $table->acmts();
         });
+
+        if (isset($columnType)) {
+            DB::statement("ALTER TABLE `samples` ADD base64_image {$columnType} NULL");
+        }
     }
 
     /**

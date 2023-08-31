@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Joy\VoyagerBreadSample\Database\Factories\SampleFactory;
 use TCG\Voyager\Facades\Voyager;
 use TCG\Voyager\Traits\Resizable;
+use TCG\Voyager\Traits\Spatial;
 use TCG\Voyager\Traits\Translatable;
 
 class Sample extends Model
@@ -20,8 +21,10 @@ class Sample extends Model
     use Translatable;
     use Resizable;
     use SoftDeletes;
+    use Spatial;
 
     protected $translatable = ['name', 'description'];
+    protected $spatial = ['coordinates'];
 
     public const ACTIVE   = 'ACTIVE';
     public const INACTIVE = 'INACTIVE';
@@ -111,4 +114,26 @@ class Sample extends Model
     {
         return new SampleFactory();
     }
+
+    // /**
+    //  * Set the user's first name.
+    //  *
+    //  * @param  string  $value
+    //  * @return void
+    //  */
+    // public function setSelectAttribute($value)
+    // {
+    //     $this->attributes['select'] = (int) $value;
+    // }
+
+    // /**
+    //  * Set the user's first name.
+    //  *
+    //  * @param  string  $value
+    //  * @return void
+    //  */
+    // public function setSelect2Attribute($value)
+    // {
+    //     $this->attributes['select2'] = (int) $value;
+    // }
 }

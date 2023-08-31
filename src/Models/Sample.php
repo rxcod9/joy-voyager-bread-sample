@@ -24,7 +24,7 @@ class Sample extends Model
     use Spatial;
 
     protected $translatable = ['name', 'description'];
-    protected $spatial = ['coordinates'];
+    protected $spatial      = ['coordinates'];
 
     public const ACTIVE   = 'ACTIVE';
     public const INACTIVE = 'INACTIVE';

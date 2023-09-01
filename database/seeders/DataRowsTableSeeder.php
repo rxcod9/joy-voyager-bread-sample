@@ -140,11 +140,11 @@ class DataRowsTableSeeder extends Seeder
                 'delete'       => 1,
                 'order'        => ++$order,
                 'details'      => [
-                    'default' => 'ACTIVE',
+                    'default' => Voyager::model('Sample')::ACTIVE,
                     'options' => [
-                        'ACTIVE'   => 'ACTIVE',
-                        'INACTIVE' => 'INACTIVE',
-                        'EXPIRED'  => 'EXPIRED',
+                        Voyager::model('Sample')::ACTIVE   => Voyager::model('Sample')::ACTIVE,
+                        Voyager::model('Sample')::INACTIVE => Voyager::model('Sample')::INACTIVE,
+                        Voyager::model('Sample')::EXPIRED  => Sample::EXPIRED,
                     ],
                 ],
             ])->save();

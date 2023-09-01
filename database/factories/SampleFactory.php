@@ -28,6 +28,10 @@ class SampleFactory extends Factory
             'base64_image'       => null,
             'browse'             => null, // file
             'checkbox'           => $this->faker->boolean(),
+            'multiple_checkbox'  => $this->faker->randomKey([
+                "checkbox1" => "Checkbox 1 Text",
+                "checkbox2" => "Checkbox 2 Text"
+            ]),
             'wysiwyg'            => $this->faker->paragraph(5),
             'color'              => $this->faker->hexColor(),
             'color_picker'       => $this->faker->hexColor(),
@@ -39,33 +43,41 @@ class SampleFactory extends Factory
             'datetime_picker'    => $this->faker->dateTimeBetween('-1month', 'now'),
             'email'              => $this->faker->email(),
             'hidden'             => $this->faker->numberBetween(1, 10),
-            'icon_picker'        => null,
+            'icon_picker'  => $this->faker->randomKey([
+                'ICON1'   => 'ICON 1',
+                'ICON2' => 'ICON 2',
+                'ICON3'  => 'ICON 3',
+            ]),
             'image'              => null, // dummy image
             'month'              => $this->faker->month(),
             'number'             => $this->faker->numberBetween(1, 10),
             'float'              => $this->faker->numberBetween(100, 5000) / 100,
             'password'           => bcrypt('sample'),
             'radio'              => $this->faker->randomKey([
-                'Radio1' => 'Radio1',
-                'Radio2' => 'Radio2',
+                "radio1" => "Radio Button 1 Text",
+                "radio2" => "Radio Button 2 Text"
             ]),
             'range'              => $this->faker->numberBetween(1, 10),
             'select'             => $this->faker->randomKey([
-                '1' => 'One',
-                '2' => 'Two',
+                "1" => "Option 1 Text",
+                "2" => "Option 2 Text"
+            ]),
+            'multiple_select'    => $this->faker->randomKey([
+                "option1" => "Option 1 Text",
+                "option2" => "Option 2 Text"
             ]),
             'select_from_array'  => $this->faker->randomKey([
-                'Option1' => 'Option1',
-                'Option2' => 'Option2',
+                "option1" => "Option 1 Text",
+                "option2" => "Option 2 Text"
             ]),
             'select2'            => $this->faker->randomKey([
-                '1' => 'One',
-                '2' => 'Two',
+                "1" => "Option 1 Text",
+                "2" => "Option 2 Text"
             ]),
             'select2_from_ajax'  => null,
             'select2_from_array' => $this->faker->randomKey([
-                'Option1' => 'Option1',
-                'Option2' => 'Option2',
+                "option1" => "Option 1 Text",
+                "option2" => "Option 2 Text"
             ]),
             'simplemde'          => $this->faker->paragraph(5),
             'summernote'         => $this->faker->paragraph(5),

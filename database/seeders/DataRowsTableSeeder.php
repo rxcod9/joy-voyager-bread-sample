@@ -48,7 +48,7 @@ class DataRowsTableSeeder extends Seeder
         $dataRow = $this->dataRow($dataType, 'description');
         if (!$dataRow->exists) {
             $dataRow->fill([
-                'type'         => 'text',
+                'type'         => 'text_area',
                 'display_name' => __('joy-voyager-bread-sample::seeders.data_rows.description'),
                 'required'     => 1,
                 'browse'       => 1,
@@ -144,7 +144,7 @@ class DataRowsTableSeeder extends Seeder
                     'options' => [
                         Voyager::model('Sample')::ACTIVE   => Voyager::model('Sample')::ACTIVE,
                         Voyager::model('Sample')::INACTIVE => Voyager::model('Sample')::INACTIVE,
-                        Voyager::model('Sample')::EXPIRED  => Sample::EXPIRED,
+                        Voyager::model('Sample')::EXPIRED  => Voyager::model('Sample')::EXPIRED,
                     ],
                 ],
             ])->save();
@@ -822,7 +822,7 @@ class DataRowsTableSeeder extends Seeder
             ])->save();
         }
 
-        $dataRow = $this->dataRow($dataType, 'coordinates'); // string
+        $dataRow = $this->dataRow($dataType, 'coordinates'); // point
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'coordinates',
@@ -835,8 +835,8 @@ class DataRowsTableSeeder extends Seeder
                 'delete'       => 0,
                 'order'        => ++$order,
                 'details' => [
-                    "showAutocompleteInput" => false,
-                    "showLatLngInput" => false
+                    "showAutocompleteInput" => true,
+                    "showLatLngInput" => true
                 ]
             ])->save();
         }

@@ -19,7 +19,7 @@ class AddFieldsSamplesTable extends Migration
             $table->json('media_picker')->nullable()->after('multiple_images');
             $table->string('multiple_checkbox')->nullable()->after('checkbox');
             $table->string('multiple_select')->nullable()->after('select');
-            $table->string('coordinates')->nullable()->after('week');
+            $table->point('coordinates')->nullable()->after('week');
             $table->json('browse')->nullable()->change();
             $table->json('upload')->nullable()->change();
             $table->json('upload_multiple')->nullable()->change();

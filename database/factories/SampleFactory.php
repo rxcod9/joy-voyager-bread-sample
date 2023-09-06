@@ -21,6 +21,11 @@ class SampleFactory extends Factory
      */
     public function definition()
     {
+        $checkboxKey = $this->faker->randomKey([
+            'checkox1' => 'Checkbox1',
+            'checkox2' => 'Checkbox2',
+        ]);
+
         return [
             'name'               => $this->faker->name(),
             'description'        => $this->faker->text(500),
@@ -28,9 +33,8 @@ class SampleFactory extends Factory
             'base64_image'       => null,
             'browse'             => null, // file
             'checkbox'           => $this->faker->boolean(),
-            'multiple_checkbox'  => $this->faker->randomKey([
-                "checkbox1" => "Checkbox 1 Text",
-                "checkbox2" => "Checkbox 2 Text"
+            'multiple_checkbox'  => json_encode([
+                $checkboxKey => $checkboxKey,
             ]),
             'wysiwyg'            => $this->faker->paragraph(5),
             'color'              => $this->faker->hexColor(),
@@ -43,41 +47,42 @@ class SampleFactory extends Factory
             'datetime_picker'    => $this->faker->dateTimeBetween('-1month', 'now'),
             'email'              => $this->faker->email(),
             'hidden'             => $this->faker->numberBetween(1, 10),
-            'icon_picker'  => $this->faker->randomKey([
-                'ICON1'   => 'ICON 1',
-                'ICON2' => 'ICON 2',
-                'ICON3'  => 'ICON 3',
-            ]),
+            'icon_picker'        => null,
             'image'              => null, // dummy image
+            'multiple_images'    => null, // dummy image
+            'media_picker'       => null, // dummy image
             'month'              => $this->faker->month(),
             'number'             => $this->faker->numberBetween(1, 10),
             'float'              => $this->faker->numberBetween(100, 5000) / 100,
             'password'           => bcrypt('sample'),
             'radio'              => $this->faker->randomKey([
-                "radio1" => "Radio Button 1 Text",
-                "radio2" => "Radio Button 2 Text"
+                'radio1' => 'Radio1',
+                'radio2' => 'Radio2',
             ]),
             'range'              => $this->faker->numberBetween(1, 10),
             'select'             => $this->faker->randomKey([
                 "1" => "Option 1 Text",
-                "2" => "Option 2 Text"
+                "2" => "Option 2 Text",
             ]),
             'multiple_select'    => $this->faker->randomKey([
                 "option1" => "Option 1 Text",
-                "option2" => "Option 2 Text"
+                "option2" => "Option 2 Text",
             ]),
             'select_from_array'  => $this->faker->randomKey([
                 "option1" => "Option 1 Text",
-                "option2" => "Option 2 Text"
+                "option2" => "Option 2 Text",
             ]),
             'select2'            => $this->faker->randomKey([
                 "1" => "Option 1 Text",
-                "2" => "Option 2 Text"
+                "2" => "Option 2 Text",
             ]),
-            'select2_from_ajax'  => null,
+            'select2_from_ajax'  => $this->faker->randomKey([
+                "option1" => "Option 1 Text",
+                "option2" => "Option 2 Text",
+            ]),
             'select2_from_array' => $this->faker->randomKey([
                 "option1" => "Option 1 Text",
-                "option2" => "Option 2 Text"
+                "option2" => "Option 2 Text",
             ]),
             'simplemde'          => $this->faker->paragraph(5),
             'summernote'         => $this->faker->paragraph(5),
@@ -90,54 +95,8 @@ class SampleFactory extends Factory
             'url'                => $this->faker->url(),
             'video'              => $this->faker->url(),
             'week'               => null,
+            'coordinates'        => null,
             'extras'             => null,
-            'status'             => $this->faker->randomKey([
-                Sample::ACTIVE   => Sample::ACTIVE,
-                Sample::INACTIVE => Sample::INACTIVE,
-                Sample::EXPIRED  => Sample::EXPIRED,
-            ]),
         ];
-    }
-
-    /**
-     * Indicate that the model's status should be active.
-     *
-     * @return \Illuminate\Database\Eloquent\Factories\Factory
-     */
-    public function active()
-    {
-        return $this->state(function (array $attributes) {
-            return [
-                'status' => Sample::ACTIVE,
-            ];
-        });
-    }
-
-    /**
-     * Indicate that the model's status should be inactive.
-     *
-     * @return \Illuminate\Database\Eloquent\Factories\Factory
-     */
-    public function inactive()
-    {
-        return $this->state(function (array $attributes) {
-            return [
-                'status' => Sample::INACTIVE,
-            ];
-        });
-    }
-
-    /**
-     * Indicate that the model's status should be expired.
-     *
-     * @return \Illuminate\Database\Eloquent\Factories\Factory
-     */
-    public function expired()
-    {
-        return $this->state(function (array $attributes) {
-            return [
-                'status' => Sample::EXPIRED,
-            ];
-        });
     }
 }
